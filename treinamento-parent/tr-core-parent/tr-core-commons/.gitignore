@@ -14,3 +14,9 @@ target/*
 .orig
 
 /output/
+
+*.MF
+MANIFEST
+/MANIFEST.MF
+**/MANIFEST.MF
+**/MANIFEST.*
