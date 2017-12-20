@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 
 import java.io.FileReader;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collector;
@@ -18,8 +19,10 @@ import com.google.gson.JsonParser;
 
 import br.com.treinamento.tr.teste.commons.dto.TransacaoProcessadaDTO;
 import br.com.treinamento.tr.teste.commons.entity.TransacaoProcessadaEntity;
+import br.com.treinamento.tr.teste.commons.util.JacksonJsonHelper;
 import br.com.treinamento.tr.teste.ports.inbound.RestInboundPort;
 import br.com.treinamento.tr.teste.ports.outbound.DynamoOutboundPort;
+import br.com.treinamento.tr.teste.starter.utils.FileUtils;
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.pt.Dado;
@@ -34,6 +37,9 @@ public class ConsultaExtratoSteps {
 
 	@Autowired
 	private RestInboundPort restPort;
+	
+	@Autowired
+	private JacksonJsonHelper jh;
 
 	private List<TransacaoProcessadaEntity> transacoesDynamo;
 
@@ -47,21 +53,30 @@ public class ConsultaExtratoSteps {
 
 	private List<TransacaoProcessadaEntity> transacoesEsperadas;
 
+    final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 	@Dado("^que exista a seguinte massa de dados cadastrada \"([^\"]*)\"$")
-	public void queExistaASeguinteMassaDeDadosCadastrada(String arg1) throws Throwable {
-		dynamoPort.insereListatransacoes(transacoesDynamo);
+	public void queExistaASeguinteMassaDeDadosCadastrada(String nomeArquivo) throws Throwable {
+		String json = FileUtils.retornaConteudoArquivoJson(JSON_FILES_PATH + nomeArquivo);
+		
+		System.out.println(json);
+		
+		carregaMassaTransacoes(json);
+		
+		//dynamoPort.insereListatransacoes(transacoesDynamo);
 	}
 
 	@Dado("^o filtro selecionado seja \"([^\"]*)\", \"([^\"]*)\" e \"([^\"]*)\"$")
-	public void oFiltroSelecionadoSejaE(Integer idConta, LocalDate dataInicial, LocalDate dataFinal) throws Throwable {
+	public void oFiltroSelecionadoSejaE(Integer idConta, String dataInicial, String dataFinal) throws Throwable {
+		
 		idContaGlobal = idConta;
-		dataInicialGlobal = dataInicial;
-		dataFinalGlobal = dataFinal;
+		dataInicialGlobal = LocalDate.parse(dataInicial, formatter);;
+		dataFinalGlobal = LocalDate.parse(dataFinal, formatter);;
 	}
 
 	@Quando("^uma requisicao de extrato for solicitada$")
 	public void umaRequisicaoDeExtratoForSolicitada() throws Throwable {
-		transacoesRetornadas = restPort.consultaExtrato(idContaGlobal, dataInicialGlobal, dataFinalGlobal);
+		//transacoesRetornadas = restPort.consultaExtrato(idContaGlobal, dataInicialGlobal, dataFinalGlobal);
 	}
 
 	@Entao("^devera retornar as transacoes para o periodo selecionado$")
@@ -72,6 +87,8 @@ public class ConsultaExtratoSteps {
 			.filter(td -> td.getDataProcessada().isAfter(dataInicialGlobal))
 			.filter(td -> td.getDataProcessada().isBefore(dataFinalGlobal))
 			.collect(Collectors.toList());
+		
+		System.out.println("Teste");
 		
 	}
 
@@ -124,11 +141,11 @@ public class ConsultaExtratoSteps {
 
 
 
-	private void carregaMassaTransacoes(String nomeArquivo) {
+	private void carregaMassaTransacoes(String json) {
 		transacoesDynamo = new ArrayList<>();
 		try {
 			transacoesDynamo
-			.addAll((new ObjectMapper().readValue(retornaConteudoArquivoJson(nomeArquivo),
+			.addAll((new ObjectMapper().readValue(json,
 					new TypeReference<List<TransacaoProcessadaEntity>>() {
 			})));
 

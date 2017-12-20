@@ -14,7 +14,6 @@ import br.com.treinamento.tr.teste.commons.dto.TransacaoDTO;
 
 public class FileUtils {
 
-    private static final String JSON_FILES_PATH = "./src/test/resources/Path/json/";
 	
     
     List<TransacaoDTO> transacoes;
@@ -32,10 +31,10 @@ public class FileUtils {
 	        return list;
 	    }
 	 
-	 private String retornaConteudoArquivoJson(String fileName) {
+	 public static String retornaConteudoArquivoJson(String filePath) {
 	        JsonParser parser = new JsonParser();
 	        try {
-	            Object json = parser.parse(new FileReader(JSON_FILES_PATH + fileName));
+	            Object json = parser.parse(new FileReader(filePath));
 	            return json.toString();
 	        } catch (Exception e) {
 	        }

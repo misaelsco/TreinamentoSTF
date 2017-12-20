@@ -1,7 +1,7 @@
 package br.com.treinamento.tr.teste.commons.util;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.slf4j.Logger;
@@ -11,17 +11,17 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 
-public class JsonDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
+public class JsonDateTimeDeserializer extends JsonDeserializer<LocalDate> {
 
     private static final Logger LOG = LoggerFactory.getLogger(JsonDateTimeDeserializer.class);
 
     @Override
-    public LocalDateTime deserialize(JsonParser dataParaDeserializar, DeserializationContext context) {
+    public LocalDate deserialize(JsonParser dataParaDeserializar, DeserializationContext context) {
 
-        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         try {
-            return LocalDateTime.parse(dataParaDeserializar.getText(), formatter);
+            return LocalDate.parse(dataParaDeserializar.getText(), formatter);
         } catch (IOException e) {
             LOG.error("NÃo foi possivel Deserializar " + dataParaDeserializar, e);
         }

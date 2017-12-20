@@ -1,6 +1,7 @@
 package br.com.treinamento.tr.teste.commons.util;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -20,11 +21,11 @@ public class JsonDateTimeSerializer extends JsonSerializer<LocalDateTime> {
     public void serialize(LocalDateTime dataParaSerializar, JsonGenerator dataSerializada,
             SerializerProvider provider) {
 
-        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        LocalDateTime localDateTime = LocalDateTime.parse(dataParaSerializar.toString());
+        LocalDate localDate = LocalDate.parse(dataParaSerializar.toString());
 
-        String formatLocalDateTime = formatter.format(localDateTime);
+        String formatLocalDateTime = formatter.format(localDate);
 
         try {
             dataSerializada.writeString(formatLocalDateTime);

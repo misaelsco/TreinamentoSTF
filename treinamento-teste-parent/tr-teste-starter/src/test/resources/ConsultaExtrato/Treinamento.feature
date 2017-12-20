@@ -9,7 +9,7 @@ Funcionalidade: Teste para extrato bancário
 
     Exemplos: 
       | cenario                                        | nomeDoJson        | idConta | dataInicial | dataFinal  |
-      | CT001 - Consulta de transacoes do mes corrente | massaInicial.json |    1234 | 01/12/2017  | 31/12/2017 |
+      | CT001 - Consulta de transacoes do mes corrente | massaInicial.json |    1234 | 01/12/2017  | 31/12/2018 |
       | CT001 - Consulta de transacoes do mes anterior | massaInicial.json |    1234 | 01/11/2017  | 30/11/2017 |
 
   Cenario: [extrato] - "CT001 - Consulta de transacoes do mes corrente"

@@ -2,21 +2,27 @@ package br.com.treinamento.tr.teste.commons.entity;
 
 import java.time.LocalDate;
 
-import com.amazonaws.util.json.Jackson;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.com.treinamento.tr.teste.commons.dto.TransacaoDTO;
 import br.com.treinamento.tr.teste.commons.enuns.TipoTransacaoEnum;
 import br.com.treinamento.tr.teste.commons.util.JacksonJsonHelper;
-
+import br.com.treinamento.tr.teste.commons.util.JsonDateTimeDeserializer;
+import br.com.treinamento.tr.teste.commons.util.JsonDateTimeSerializer;
 
 public class TransacaoProcessadaEntity{
 
 	private Integer idConta;
 
 	private Double valor;
-	
+
+    @JsonSerialize(using = JsonDateTimeSerializer.class)
+    @JsonDeserialize(using = JsonDateTimeDeserializer.class)
 	private LocalDate dataEnvio;
 
+    @JsonSerialize(using = JsonDateTimeSerializer.class)
+    @JsonDeserialize(using = JsonDateTimeDeserializer.class)
 	private LocalDate dataProcessada;
 	
 	private TipoTransacaoEnum tipo;
