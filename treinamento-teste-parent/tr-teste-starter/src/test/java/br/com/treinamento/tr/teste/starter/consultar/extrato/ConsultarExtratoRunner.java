@@ -10,7 +10,7 @@ import cucumber.api.junit.Cucumber;
                 monochrome = true, 
                 glue = {"br.com.treinamento.tr.teste.starter.consultar.extrato"}, 
                 features = {"src/test/resources/ConsultaExtrato/Treinamento.feature"}, 
-                plugin = "br.com.treinamento.tr.teste.starter.util.report.ExtentCucumberFormatter", 
+                plugin = "br.com.treinamento.tr.teste.starter.utils.ExtentCucumberFormatter", 
                 snippets = cucumber.api.SnippetType.CAMELCASE)
 public class ConsultarExtratoRunner {
 }

@@ -18,18 +18,18 @@ public class FileUtils {
 	
     
     List<TransacaoDTO> transacoes;
-	 private void carregaMassaTransacoes(String nomeArquivo) {
-	        transacoes = new ArrayList<>();
+	 private <T> List<Object> carregaMassaTransacoes(String json, final TypeReference<T> clazz) {
+	        List<Object> list = new ArrayList<>();
 	        try {
-	            transacoes
-	                    .addAll((new ObjectMapper().readValue(retornaConteudoArquivoJson(nomeArquivo),
-	                            new TypeReference<List<TransacaoDTO>>() {
-	                            })));
+	        	list
+	                    .addAll((new ObjectMapper().readValue(json, clazz)));
 
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            fail();
 	        }
+	        
+	        return list;
 	    }
 	 
 	 private String retornaConteudoArquivoJson(String fileName) {

@@ -1,11 +1,15 @@
 package br.com.treinamento.tr.teste.commons.util;
 
+import static org.junit.Assert.fail;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -140,6 +144,24 @@ public class JacksonJsonHelper {
             logger.error(e.getMessage());
             throw new IllegalArgumentException("Erro ao serializar objeto", e);
         }
+    }
+    
+    /**
+     * Cria uma lista de Objects a partir de uma string Json
+     * 
+     * @param json
+     * @param clazz
+     * @return List object
+     */
+    public final <T> List<Object> getListObjectByJsonString(String json, final TypeReference<T> clazz) {
+        List<Object> list = new ArrayList<>();
+        try {
+        	list.addAll(new ObjectMapper().readValue(json, clazz));
+        } catch (Exception e) {
+        	logger.error(e.getMessage());
+        	throw new IllegalArgumentException("Erro ao serializar objeto", e);
+        }
+        return list;
     }
 
 }

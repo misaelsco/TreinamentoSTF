@@ -18,8 +18,11 @@ import br.com.treinamento.tr.teste.commons.dto.TransacaoProcessadaDTO;
 import br.com.treinamento.tr.teste.commons.entity.TransacaoProcessadaEntity;
 import br.com.treinamento.tr.teste.ports.inbound.RestInboundPort;
 import br.com.treinamento.tr.teste.ports.outbound.DynamoOutboundPort;
+import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.pt.Dado;
-import cucumber.api.java.pt.E;
+import cucumber.api.java.pt.Entao;
+import cucumber.api.java.pt.Quando;
 
 public class ConsultaExtratoSteps {
 	private static final String JSON_FILES_PATH = "./src/test/resources/ConsultaExtrato/json/";
@@ -40,32 +43,45 @@ public class ConsultaExtratoSteps {
 
 	private ResponseEntity<List<TransacaoProcessadaDTO>> transacoesRetornadas;
 
-	@Dado("^que exista a seguinte massa de dados cadastrada$")
-	public void dadoQueExistaASeguinte(String nomeArquivo)  {
+
+
+	@Dado("^que exista a seguinte massa de dados cadastrada \"([^\"]*)\"$")
+	public void queExistaASeguinteMassaDeDadosCadastrada(String arg1) throws Throwable {
 		dynamoPort.insereListatransacoes(transacoesDynamo);
 	}
 
-	@E("^o filtro selecionado seja $")
-	public void oFiltroSelecionadoSeja(Integer idConta, LocalDate dataInicial, LocalDate dataFinal) {
+	@Dado("^o filtro selecionado seja \"([^\"]*)\", \"([^\"]*)\" e \"([^\"]*)\"$")
+	public void oFiltroSelecionadoSejaE(Integer idConta, LocalDate dataInicial, LocalDate dataFinal) throws Throwable {
 		idContaGlobal = idConta;
 		dataInicialGlobal = dataInicial;
 		dataFinalGlobal = dataFinal;
 	}
 
-	public void fazRequisicao() {
+	@Quando("^uma requisicao de extrato for solicitada$")
+	public void umaRequisicaoDeExtratoForSolicitada() throws Throwable {
 		transacoesRetornadas = restPort.consultaExtrato(idContaGlobal, dataInicialGlobal, dataFinalGlobal);
 	}
-	
-	public void entaoDeveRetornarAsTransacoes() {
-		transacoesDynamo.stream()
-			.filter(td -> td.getIdConta().equals(idContaGlobal))
-			.filter(td -> td.getDataProcessada().getMonth().equals(dataInicialGlobal))
-		
-		
-		
+
+	@Entao("^devera retornar as transacoes para o periodo selecionado$")
+	public void deveraRetornarAsTransacoesParaOPeriodoSelecionado() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
 	}
 
+	@Dado("^o filtro selecionado seja \"([^\"]*)\"$")
+	public void oFiltroSelecionadoSeja(String arg1) throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		throw new PendingException();
+	}
 
+	@Dado("^que exista a seguinte massa de dados cadastrada:$")
+	public void queExistaASeguinteMassaDeDadosCadastrada(DataTable arg1) throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		// For automatic transformation, change DataTable to one of
+		// List<YourType>, List<List<E>>, List<Map<K,V>> or Map<K,V>.
+		// E,K,V must be a scalar (String, Integer, Date, enum etc)
+		throw new PendingException();
+	}
 
 
 
