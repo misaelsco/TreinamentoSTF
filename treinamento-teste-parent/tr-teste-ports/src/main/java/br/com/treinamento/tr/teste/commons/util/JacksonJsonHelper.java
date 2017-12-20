@@ -1,4 +1,4 @@
-package br.com.treinamento.tr.teste.commons.entity;
+package br.com.treinamento.tr.teste.commons.util;
 
 import java.io.File;
 import java.io.IOException;
