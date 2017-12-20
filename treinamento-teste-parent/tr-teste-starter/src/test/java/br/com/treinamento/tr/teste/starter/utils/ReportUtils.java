@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.treinamento.tr.teste.commons.util.JacksonJsonHelper;
+
 /**
  * Classe utilitária para formatação de textos exibidos no relatório dos testes.
  */

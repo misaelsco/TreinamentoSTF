@@ -6,6 +6,7 @@ import com.amazonaws.util.json.Jackson;
 
 import br.com.treinamento.tr.teste.commons.dto.TransacaoDTO;
 import br.com.treinamento.tr.teste.commons.enuns.TipoTransacaoEnum;
+import br.com.treinamento.tr.teste.commons.util.JacksonJsonHelper;
 
 
 public class TransacaoProcessadaEntity{
@@ -22,8 +23,54 @@ public class TransacaoProcessadaEntity{
 	
 	private TransacaoDTO transacao;
 	
-	
-	
+	public Integer getIdConta() {
+		return idConta;
+	}
+
+	public void setIdConta(Integer idConta) {
+		this.idConta = idConta;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
+	public LocalDate getDataEnvio() {
+		return dataEnvio;
+	}
+
+	public void setDataEnvio(LocalDate dataEnvio) {
+		this.dataEnvio = dataEnvio;
+	}
+
+	public LocalDate getDataProcessada() {
+		return dataProcessada;
+	}
+
+	public void setDataProcessada(LocalDate dataProcessada) {
+		this.dataProcessada = dataProcessada;
+	}
+
+	public TipoTransacaoEnum getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoTransacaoEnum tipo) {
+		this.tipo = tipo;
+	}
+
+	public TransacaoDTO getTransacao() {
+		return transacao;
+	}
+
+	public void setTransacao(TransacaoDTO transacao) {
+		this.transacao = transacao;
+	}
+
 	public static void main(String[] args) {
 		
 		JacksonJsonHelper js = new JacksonJsonHelper();
@@ -37,81 +84,7 @@ public class TransacaoProcessadaEntity{
 		
 		System.out.println(js.writeWithDefaultDateFormat(tr));
 		
-		//Jackson.toJsonString(tr);
 	}
 
-
-
-	public Integer getIdConta() {
-		return idConta;
-	}
-
-
-
-	public void setIdConta(Integer idConta) {
-		this.idConta = idConta;
-	}
-
-
-
-	public Double getValor() {
-		return valor;
-	}
-
-
-
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-
-
-
-	public LocalDate getDataEnvio() {
-		return dataEnvio;
-	}
-
-
-
-	public void setDataEnvio(LocalDate dataEnvio) {
-		this.dataEnvio = dataEnvio;
-	}
-
-
-
-	public LocalDate getDataProcessada() {
-		return dataProcessada;
-	}
-
-
-
-	public void setDataProcessada(LocalDate dataProcessada) {
-		this.dataProcessada = dataProcessada;
-	}
-
-
-
-	public TipoTransacaoEnum getTipo() {
-		return tipo;
-	}
-
-
-
-	public void setTipo(TipoTransacaoEnum tipo) {
-		this.tipo = tipo;
-	}
-
-
-
-	public TransacaoDTO getTransacao() {
-		return transacao;
-	}
-
-
-
-	public void setTransacao(TransacaoDTO transacao) {
-		this.transacao = transacao;
-	}
-	
-	
 	
 }
