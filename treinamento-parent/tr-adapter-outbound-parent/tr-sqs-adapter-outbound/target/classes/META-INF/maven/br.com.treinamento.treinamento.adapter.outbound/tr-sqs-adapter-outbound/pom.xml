@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>tr-sqs-adapter-outbound</artifactId>
+	<name>Modulo adapter outbound sqs</name>
+	<description>Módulo de adapter de outbound do sqs</description>
+
+	<parent>
+		<groupId>br.com.treinamento.treinamento.adapter.outbound</groupId>
+		<artifactId>tr-adapter-outbound-parent</artifactId>
+		<version>1.0.0.SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-sqs</artifactId>
+			<version>1.11.250</version>
+		</dependency>
+
+		<!-- Spring Boot -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+		</dependency>
+
+		<!-- Dependencias do projeto -->
+
+		<dependency>
+			<groupId>br.com.treinamento.treinamento.core</groupId>
+			<artifactId>tr-core-application</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>br.com.treinamento.treinamento.core</groupId>
+			<artifactId>tr-core-commons</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>false</skipTests>
+					<includes>
+						<include>**/TesteSuite.class</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

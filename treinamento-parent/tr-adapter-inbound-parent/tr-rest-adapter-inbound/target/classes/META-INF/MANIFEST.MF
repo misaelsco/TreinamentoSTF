@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: Modulo adapter inbound rest
+Implementation-Version: 1.0.0.SNAPSHOT
+Built-By: Quezia
+Implementation-Vendor-Id: br.com.treinamento.treinamento.adapter.inbou
+ nd
+Build-Jdk: 1.8.0_144
+Implementation-URL: http://projects.spring.io/spring-boot/treinamento-
+ parent/tr-adapter-inbound-parent/tr-rest-adapter-inbound/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

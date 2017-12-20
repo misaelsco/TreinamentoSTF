@@ -1,0 +1,153 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.treinamento.treinamento.teste</groupId>
+	<artifactId>treinamento-teste-parent</artifactId>
+	<name>Projeto Treinamento Teste</name>
+	<description>Projeto de teste do microserviço Projeto Treinamento</description>
+	<version>1.0.0.SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.2.RELEASE</version>
+		<relativePath />
+	</parent>
+
+	<modules>
+		<module>tr-teste-ports</module>
+		<module>tr-teste-starter</module>
+		<module>tr-teste-integrado</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<!-- AWS -->
+		<amazon-aws.version>1.11.205</amazon-aws.version>
+		<spring-jms.version>4.3.7.RELEASE</spring-jms.version>
+
+		<!-- Versões de Modulos do Core -->
+		<tr-core-application.version>1.0.0.SNAPSHOT</tr-core-application.version>
+		<tr-core-commons.version>1.0.0.SNAPSHOT</tr-core-commons.version>
+
+		<!-- Versões de Modulos Adapters de Inbound -->
+
+		<tr-rest-adapter-inbound.version>1.0.0.SNAPSHOT</tr-rest-adapter-inbound.version>
+
+		<!-- Versões de Modulos Adapters de Outbound -->
+
+		<tr-sqs-adapter-outbound.version>1.0.0.SNAPSHOT</tr-sqs-adapter-outbound.version>
+		<tr-dynamodb-adapter-outbound.version>1.0.0.SNAPSHOT</tr-dynamodb-adapter-outbound.version>
+
+		<!-- Versões de Modulos do Teste -->
+		<tr-teste-integrado.version>1.0.0.SNAPSHOT</tr-teste-integrado.version>
+		<tr-teste-ports.version>1.0.0.SNAPSHOT</tr-teste-ports.version>
+		<tr-teste-starter.version>1.0.0.SNAPSHOT</tr-teste-starter.version>
+
+		<!-- Cucumber -->
+		<cucumber-spring.version>1.2.5</cucumber-spring.version>
+		<cucumber-junit.version>1.2.5</cucumber-junit.version>
+
+		<!-- Awaitility -->
+		<awaitility.version>2.0.0</awaitility.version>
+
+		<!-- Sonar Configuration -->
+		<sonar.exclusions>*.*</sonar.exclusions>
+	</properties>
+
+	<dependencies>
+		<!-- Spring Boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>com.amazonaws</groupId>
+				<artifactId>aws-java-sdk</artifactId>
+				<version>1.11.106</version>
+			</dependency>
+			<!-- Cucumber -->
+			<dependency>
+				<groupId>info.cukes</groupId>
+				<artifactId>cucumber-spring</artifactId>
+				<version>${cucumber-spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>info.cukes</groupId>
+				<artifactId>cucumber-junit</artifactId>
+				<version>${cucumber-junit.version}</version>
+			</dependency>
+
+			<!-- Adapters Inbound -->
+
+			<dependency>
+				<groupId>br.com.treinamento.treinamento.adapter.inbound</groupId>
+				<artifactId>tr-rest-adapter-inbound</artifactId>
+				<version>${tr-rest-adapter-inbound.version}</version>
+			</dependency>
+
+			<!-- Adapters Outbound -->
+
+			<dependency>
+				<groupId>br.com.treinamento.treinamento.adapter.outbound</groupId>
+				<artifactId>tr-sqs-adapter-outbound</artifactId>
+				<version>${tr-sqs-adapter-outbound.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.com.treinamento.treinamento.adapter.outbound</groupId>
+				<artifactId>tr-dynamodb-adapter-outbound</artifactId>
+				<version>${tr-dynamodb-adapter-outbound.version}</version>
+			</dependency>
+
+			<!-- Awaitility -->
+			<dependency>
+				<groupId>org.awaitility</groupId>
+				<artifactId>awaitility</artifactId>
+				<version>${awaitility.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- AWS SDK -->
+			<dependency>
+				<groupId>com.amazonaws</groupId>
+				<artifactId>aws-java-sdk-core</artifactId>
+				<version>${amazon-aws.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.amazonaws</groupId>
+				<artifactId>aws-java-sdk-sqs</artifactId>
+				<version>${amazon-aws.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+				<version>${spring-jms.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.amazonaws</groupId>
+				<artifactId>aws-java-sdk-dynamodb</artifactId>
+				<version>${amazon-aws.version}</version>
+			</dependency>
+
+			<!-- Modulos de Teste -->
+			<dependency>
+				<groupId>br.com.treinamento.treinamento.teste</groupId>
+				<artifactId>tr-teste-ports</artifactId>
+				<version>${tr-teste-ports.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.com.treinamento.treinamento.teste</groupId>
+				<artifactId>tr-teste-integrado</artifactId>
+				<version>${tr-teste-integrado.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>

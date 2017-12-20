@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>tr-teste-starter</artifactId>
+	<name>Modulo de Teste Starter</name>
+	<description>Modulo que contem o starter de teste do microserviço Projeto Treinamento</description>
+
+	<parent>
+		<groupId>br.com.treinamento.treinamento.teste</groupId>
+		<artifactId>treinamento-teste-parent</artifactId>
+		<version>1.0.0.SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+
+		<!-- Test Ports -->
+		<dependency>
+			<groupId>br.com.treinamento.treinamento.teste</groupId>
+			<artifactId>tr-teste-ports</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.treinamento.treinamento.teste</groupId>
+			<artifactId>tr-teste-integrado</artifactId>
+		</dependency>
+
+		<!-- Cucumber -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-spring</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.relevantcodes</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>2.41.2</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>false</skipTests>
+					<includes>
+						<include>**/*NomeDaClasseTest.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

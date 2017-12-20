@@ -1,0 +1,19 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.treinamento.treinamento.adapter.inbound</groupId>
+	<artifactId>tr-adapter-inbound-parent</artifactId>
+	<packaging>pom</packaging>
+	<name>Modulo Parent Adapter Inbound</name>
+	<description>Modulo responsavel pela centralização dos adapters de inbound</description>
+	
+	<parent>
+		<groupId>br.com.treinamento.treinamento</groupId>
+		<artifactId>treinamento-parent</artifactId>
+		<version>1.0.0.SNAPSHOT</version>
+	</parent>
+	
+	<modules>
+	    <module>tr-rest-adapter-inbound</module>
+	</modules>
+</project>

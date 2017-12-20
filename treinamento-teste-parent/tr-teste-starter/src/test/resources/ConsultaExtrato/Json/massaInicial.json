@@ -1,0 +1,23 @@
+[
+  {
+    "idConta": 1234,
+    "valor": 150,
+    "dataEnvio": "19/12/2017 19:20",
+    "dataProcessada": "19/12/2017 19:20",
+    "tipo": "CREDITO"
+  },
+  {
+    "idConta": 1234,
+    "valor": 120,
+    "dataEnvio": "19/12/2017 19:20",
+    "dataProcessada": "19/12/2017 19:20",
+    "tipo": "DEBITO"
+  },
+  {
+    "idConta": 1234,
+    "valor": 12,
+    "dataEnvio": "19/12/2017 19:20",
+    "dataProcessada": "19/12/2017 19:20",
+    "tipo": "DEBITO"
+  }
+]

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: Modulo de Build
+Implementation-Version: 1.0.0.SNAPSHOT
+Built-By: Quezia
+Implementation-Vendor-Id: br.com.treinamento.treinamento
+Build-Jdk: 1.8.0_144
+Implementation-URL: http://projects.spring.io/spring-boot/treinamento-
+ parent/tr-build/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: br.com.treinamento.tr.adapter.inbound.StarterApplication
+

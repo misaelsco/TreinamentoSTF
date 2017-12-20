@@ -1,0 +1,3 @@
+D:\Workspace\Sprint28\treinamento\treinamento-parent\tr-adapter-outbound-parent\tr-sqs-adapter-outbound\src\main\java\br\com\treinamento\tr\adapter\outbound\config\SqsConfiguration.java
+D:\Workspace\Sprint28\treinamento\treinamento-parent\tr-adapter-outbound-parent\tr-sqs-adapter-outbound\src\main\java\br\com\treinamento\tr\adapter\outbound\handler\SqsAdapterOutboundHandler.java
+D:\Workspace\Sprint28\treinamento\treinamento-parent\tr-adapter-outbound-parent\tr-sqs-adapter-outbound\src\main\java\br\com\treinamento\tr\adapter\outbound\exception\MensagemNaoEnviadaException.java

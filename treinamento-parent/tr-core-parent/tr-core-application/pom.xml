@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>tr-core-application</artifactId>
+	<name>Modulo Core Application</name>
+	<description>Modulo que contém o CoreHandler, responsavel pelo processamento de regras do microserviço</description>
+
+	<parent>
+		<groupId>br.com.treinamento.treinamento.core</groupId>
+		<artifactId>tr-core-parent</artifactId>
+		<version>1.0.0.SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+	
+	    <!-- Spring Boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+				
+		<!-- Core -->
+		<dependency>
+			<groupId>br.com.treinamento.treinamento.core</groupId>
+			<artifactId>tr-core-port-inbound</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>br.com.treinamento.treinamento.core</groupId>
+			<artifactId>tr-core-port-outbound</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>false</skipTests>
+					<includes>
+						<include>**/TesteSuite.class</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

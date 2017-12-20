@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>tr-core-port-outbound</artifactId>
+	<name>Modulo Core Port outbound</name>
+	<description>Módulo que contém as interfaces de outbound do Core</description>
+
+	<parent>
+		<groupId>br.com.treinamento.treinamento.core</groupId>
+		<artifactId>tr-core-parent</artifactId>
+		<version>1.0.0.SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>br.com.treinamento.treinamento.core</groupId>
+			<artifactId>tr-core-commons</artifactId>
+		</dependency>
+<!-- 		<dependency>
+			<groupId>br.com.treinamento.treinamento.core</groupId>
+			<artifactId>tr-core-application</artifactId>
+		</dependency> -->
+	</dependencies>
+</project>

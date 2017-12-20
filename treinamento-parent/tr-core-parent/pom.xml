@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.treinamento.treinamento.core</groupId>
+	<artifactId>tr-core-parent</artifactId>
+	<packaging>pom</packaging>
+	<name>Modulo Core Parent</name>
+	<description>Modulo reponsavel pelo processamento das regras do microserviço</description>
+
+	<parent>
+		<groupId>br.com.treinamento.treinamento</groupId>
+		<artifactId>treinamento-parent</artifactId>
+		<version>1.0.0.SNAPSHOT</version>
+	</parent>
+
+	<modules>
+		<module>tr-core-application</module>
+		<module>tr-core-port-inbound</module>
+		<module>tr-core-port-outbound</module>
+		<module>tr-core-commons</module>
+	</modules>
+	
+</project>

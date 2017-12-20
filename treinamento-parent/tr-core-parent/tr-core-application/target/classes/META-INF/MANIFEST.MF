@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: Modulo Core Application
+Implementation-Version: 1.0.0.SNAPSHOT
+Built-By: Quezia
+Implementation-Vendor-Id: br.com.treinamento.treinamento.core
+Build-Jdk: 1.8.0_144
+Implementation-URL: http://projects.spring.io/spring-boot/treinamento-
+ parent/tr-core-parent/tr-core-application/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

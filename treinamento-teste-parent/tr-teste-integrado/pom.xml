@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>tr-teste-integrado</artifactId>
+	<name>Modulo de Teste Integrado</name>
+	<description>Modulo responsavel execução de testes integrados do microserviço Projeto Treinamento</description>
+
+	<parent>
+		<groupId>br.com.treinamento.treinamento.teste</groupId>
+		<artifactId>treinamento-teste-parent</artifactId>
+		<version>1.0.0.SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-sqs</artifactId>
+			<version>1.11.250</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-dynamodb</artifactId>
+			<version>1.11.250</version>
+		</dependency>
+
+		<!-- Spring Boot Starters -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
+		
+		<!-- GSON -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+
+		<!-- Cucumber -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-spring</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Test Ports -->
+		<dependency>
+			<groupId>br.com.treinamento.treinamento.teste</groupId>
+			<artifactId>tr-teste-ports</artifactId>
+		</dependency>
+		
+	</dependencies>
+
+</project>

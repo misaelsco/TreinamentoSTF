@@ -1,0 +1,5 @@
+D:\Workspace\Sprint28\treinamento\treinamento-parent\tr-adapter-outbound-parent\tr-dynamodb-adapter-outbound\src\main\java\br\com\treinamento\tr\adapter\outbound\entity\TransacaoProcessadaEntity.java
+D:\Workspace\Sprint28\treinamento\treinamento-parent\tr-adapter-outbound-parent\tr-dynamodb-adapter-outbound\src\main\java\br\com\treinamento\tr\adapter\outbound\config\DynamodbConfiguration.java
+D:\Workspace\Sprint28\treinamento\treinamento-parent\tr-adapter-outbound-parent\tr-dynamodb-adapter-outbound\src\main\java\br\com\treinamento\tr\adapter\outbound\exception\MensagemNaoEnviadaException.java
+D:\Workspace\Sprint28\treinamento\treinamento-parent\tr-adapter-outbound-parent\tr-dynamodb-adapter-outbound\src\main\java\br\com\treinamento\tr\adapter\outbound\handler\DynamodbAdapterOutboundHandler.java
+D:\Workspace\Sprint28\treinamento\treinamento-parent\tr-adapter-outbound-parent\tr-dynamodb-adapter-outbound\src\main\java\br\com\treinamento\tr\adapter\outbound\repository\DynamodbOutboundRepository.java

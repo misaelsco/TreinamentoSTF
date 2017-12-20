@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>tr-build</artifactId>
+	<name>Modulo de Build</name>
+	<description>Modulo de Build do Microserviço</description>
+
+	<parent>
+		<groupId>br.com.treinamento.treinamento</groupId>
+		<artifactId>treinamento-parent</artifactId>
+		<version>1.0.0.SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<start-class>br.com.treinamento.tr.adapter.inbound.StarterApplication</start-class>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<layout>JAR</layout>
+					<mainClass>br.com.treinamento.tr.adapter.inbound.StarterApplication</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<dependencies>
+		
+		<!-- Adapters Inbound-->
+		
+		<dependency>
+			<groupId>br.com.treinamento.treinamento.adapter.inbound</groupId>
+			<artifactId>tr-rest-adapter-inbound</artifactId>
+		</dependency>
+		
+		<!--Core Application-->
+		
+		<dependency>
+			<groupId>br.com.treinamento.treinamento.core</groupId>
+			<artifactId>tr-core-application</artifactId>
+		</dependency>
+	
+		<!-- Adapters Outbound-->
+		
+		<dependency>
+			<groupId>br.com.treinamento.treinamento.adapter.outbound</groupId>
+			<artifactId>tr-sqs-adapter-outbound</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>br.com.treinamento.treinamento.adapter.outbound</groupId>
+			<artifactId>tr-dynamodb-adapter-outbound</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

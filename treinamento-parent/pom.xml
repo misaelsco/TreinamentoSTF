@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.treinamento.treinamento</groupId>
+	<artifactId>treinamento-parent</artifactId>
+	<name>Projeto Treinamento</name>
+	<description>treinamento teste microservico</description>
+	<version>1.0.0.SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.2.RELEASE</version>
+	</parent>
+
+	<!-- Modulos do Microserviço -->
+	<modules>
+		<module>tr-core-parent</module>
+		<module>tr-adapter-inbound-parent</module>
+		<module>tr-adapter-outbound-parent</module>
+		<module>tr-build</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+
+		<!-- Versões de Modulos do Core -->
+		<tr-core-application.version>1.0.0.SNAPSHOT</tr-core-application.version>
+		<tr-core-port-inbound.version>1.0.0.SNAPSHOT</tr-core-port-inbound.version>
+		<tr-core-port-outbound.version>1.0.0.SNAPSHOT</tr-core-port-outbound.version>
+		<tr-core-commons.version>1.0.0.SNAPSHOT</tr-core-commons.version>
+
+		<!-- Versões de Modulos Adapters de Inbound -->
+
+		<tr-rest-adapter-inbound.version>1.0.0.SNAPSHOT</tr-rest-adapter-inbound.version>
+
+		<!-- Versões de Modulos Adapters de Outbound -->
+
+		<tr-sqs-adapter-outbound.version>1.0.0.SNAPSHOT</tr-sqs-adapter-outbound.version>
+		<tr-dynamodb-adapter-outbound.version>1.0.0.SNAPSHOT</tr-dynamodb-adapter-outbound.version>
+
+		<!-- Jacoco -->
+		<testng.version>6.8.8</testng.version>
+		<jacoco.version>0.7.2.201409121644</jacoco.version>
+
+		<!-- Sonar Configuration -->
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.jacoco.reportPath>${project.build.directory}/../target/jacoco.exec</sonar.jacoco.reportPath>
+		<sonar.language>java</sonar.language>
+		<sonar.exclusions>
+			**/org/vonbraunlabs/**.*,
+			**/**Application.*,
+			**/**Configuration.*,
+			**/**Exception.*,
+			**/**Validador.*,
+			**/**Factory.*,
+			**/**Chain.*,
+			**/**Template.*,
+			**/**Validador.*,
+			**/**Builder.*,
+			**/**Entity.*,
+			**/**Parse.*,
+			**/**Util.*,
+			**/**Dao.*,
+			**/**Dto.*,
+			**/**Config.*
+		</sonar.exclusions>
+	</properties>
+
+	<dependencies>
+
+		<!-- Spring Boot Starters -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+
+
+			<dependency>
+				<groupId>com.amazonaws</groupId>
+				<artifactId>aws-java-sdk</artifactId>
+				<version>1.11.106</version>
+			</dependency>
+			<!-- Core Dependencies -->
+			<dependency>
+				<groupId>br.com.treinamento.treinamento.core</groupId>
+				<artifactId>tr-core-application</artifactId>
+				<version>${tr-core-application.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.com.treinamento.treinamento.core</groupId>
+				<artifactId>tr-core-port-outbound</artifactId>
+				<version>${tr-core-port-outbound.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.com.treinamento.treinamento.core</groupId>
+				<artifactId>tr-core-port-inbound</artifactId>
+				<version>${tr-core-port-inbound.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.com.treinamento.treinamento.core</groupId>
+				<artifactId>tr-core-commons</artifactId>
+				<version>${tr-core-commons.version}</version>
+			</dependency>
+
+			<!-- Adapters Inbound -->
+
+			<dependency>
+				<groupId>br.com.treinamento.treinamento.adapter.inbound</groupId>
+				<artifactId>tr-rest-adapter-inbound</artifactId>
+				<version>${tr-rest-adapter-inbound.version}</version>
+			</dependency>
+
+			<!-- Adapters Outbound -->
+
+			<dependency>
+				<groupId>br.com.treinamento.treinamento.adapter.outbound</groupId>
+				<artifactId>tr-sqs-adapter-outbound</artifactId>
+				<version>${tr-sqs-adapter-outbound.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.com.treinamento.treinamento.adapter.outbound</groupId>
+				<artifactId>tr-dynamodb-adapter-outbound</artifactId>
+				<version>${tr-dynamodb-adapter-outbound.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<!-- Jacoco Code Coverage Report -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>false</skipTests>
+					<includes>
+						<include>**/*Teste.java</include>
+						<include>**/*Test.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<configuration>
+					<outputDirectory>${project.build.directory}/jacoco</outputDirectory>
+					<destFile>${sonar.jacoco.reportPath}</destFile>
+					<append>true</append>
+					<excludes>
+						<exclude>**/proto/*</exclude>
+						<exclude>**/org/vonbraunlabs/**</exclude>
+						<exclude>**/**Application.*</exclude>
+						<exclude>**/**Configuration.*</exclude>
+						<exclude>**/**Config.*</exclude>
+						<exclude>**/**Exception.*</exclude>
+						<exclude>**/**Validador.*</exclude>
+						<exclude>**/**Factory.*</exclude>
+						<exclude>**/**Chain.*</exclude>
+						<exclude>**/**Template.*</exclude>
+						<exclude>**/**Builder.*</exclude>
+						<exclude>**/**Entity.*</exclude>
+						<exclude>**/**Parse.*</exclude>
+						<exclude>**/**Util.*</exclude>
+						<exclude>**/**Dao.*</exclude>
+						<exclude>**/**Dto.*</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
