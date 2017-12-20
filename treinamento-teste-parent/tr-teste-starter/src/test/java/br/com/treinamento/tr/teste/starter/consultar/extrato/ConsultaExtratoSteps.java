@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +45,7 @@ public class ConsultaExtratoSteps {
 
 	private ResponseEntity<List<TransacaoProcessadaDTO>> transacoesRetornadas;
 
-
+	private List<TransacaoProcessadaEntity> transacoesEsperadas;
 
 	@Dado("^que exista a seguinte massa de dados cadastrada \"([^\"]*)\"$")
 	public void queExistaASeguinteMassaDeDadosCadastrada(String arg1) throws Throwable {
@@ -64,8 +66,13 @@ public class ConsultaExtratoSteps {
 
 	@Entao("^devera retornar as transacoes para o periodo selecionado$")
 	public void deveraRetornarAsTransacoesParaOPeriodoSelecionado() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		
+		transacoesEsperadas = transacoesDynamo.stream()
+			.filter(td -> td.getIdConta().equals(idContaGlobal))
+			.filter(td -> td.getDataProcessada().isAfter(dataInicialGlobal))
+			.filter(td -> td.getDataProcessada().isBefore(dataFinalGlobal))
+			.collect(Collectors.toList());
+		
 	}
 
 	@Dado("^o filtro selecionado seja \"([^\"]*)\"$")
