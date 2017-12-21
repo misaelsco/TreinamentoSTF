@@ -1,0 +1,29 @@
+### MVN ###
+**/target/*
+*/target/*
+**/output/*
+*/output/*
+
+
+### Eclipse ###
+.classpath
+.project
+.settings
+.class
+.prefs
+pom.properties
+**/build/*
+*/build/*
+**/bin/*
+*/bin/*
+**/output/**
+*.MF
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Serverless directories
+.serverless
+/target/
