@@ -88,7 +88,6 @@ public class TransacaoProcessadaEntity{
 		tr.dataProcessada = LocalDate.now();
 		tr.tipo = TipoTransacaoEnum.CREDITO;
 		
-		System.out.println(js.writeWithDefaultDateFormat(tr));
 		
 	}
 

@@ -13,11 +13,11 @@
 
 	<dependencies>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-sqs</artifactId>
 			<version>1.11.250</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- Spring Boot -->
 

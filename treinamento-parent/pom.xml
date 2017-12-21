@@ -89,11 +89,11 @@
 		<dependencies>
 
 
-			<dependency>
+			<!-- <dependency>
 				<groupId>com.amazonaws</groupId>
 				<artifactId>aws-java-sdk</artifactId>
 				<version>1.11.106</version>
-			</dependency>
+			</dependency> -->
 			<!-- Core Dependencies -->
 			<dependency>
 				<groupId>br.com.treinamento.treinamento.core</groupId>
